@@ -31,12 +31,12 @@ def recommend(game_title, top_n=10):
         target_vector = combined_features[idx].reshape(1, -1)
         similarities = cosine_similarity(target_vector, combined_features)[0]
         similar_indices = similarities.argsort()[::-1][1:top_n+1]
-        return games_df.iloc[similar_indices][['title', 'original_price', 'reviews_summary', 'developer']]
+        return games_df.iloc[similar_indices][['title', 'game_description', 'original_price', 'reviews_summary', 'developer']]
     except:
         return pd.DataFrame()
 
 # Интерфейс Streamlit
-st.title("🎮 Game Recommendation Engine")
+st.title("Game Recommendation Engine")
 st.write("Рекомендательная система для видеоигр")
 
 # Поиск игры
@@ -55,7 +55,8 @@ if st.button('Найти рекомендации'):
             **{row['title']}**  
             *Разработчик*: {row['developer']}  
             *Цена*: {row['original_price']}  
-            *Отзывы*: {row['reviews_summary']}
+            *Отзывы*: {row['reviews_summary']}\n
+            *Описание*: {row['game_description']} 
             """)
             st.divider()
     else:
