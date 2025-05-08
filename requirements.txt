@@ -1,0 +1,9 @@
+streamlit
+pandas
+nump
+scikit-learn
+gensim
+pyarrow
+tqdm
+seaborn
+jupyter
