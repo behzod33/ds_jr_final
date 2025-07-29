@@ -4,5 +4,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 run mkdir source models
+COPY "source/games.parquet" source
 COPY "models/*" models
 CMD [ "streamlit", "run", "app.py" ]
