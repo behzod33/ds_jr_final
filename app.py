@@ -32,7 +32,7 @@ def recommend(game_title, top_n=10):
         similarities = cosine_similarity(target_vector, combined_features)[0]
         similar_indices = similarities.argsort()[::-1][1:top_n+1]
         return games_df.iloc[similar_indices][['title', 'game_description', 'original_price', 'reviews_summary', 'developer']]
-    except:
+    except Exception:
         return pd.DataFrame()
 
 # Интерфейс Streamlit
